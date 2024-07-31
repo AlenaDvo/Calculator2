@@ -1,7 +1,9 @@
 package org.example;
 
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class MainTest {
 
@@ -57,8 +59,9 @@ class MainTest {
 
     @Test
     void dividingZero() {
-        assertThat(Main.divide(100F, 0F)).isEqualTo("Cannot divide by zero.");
+        assertThatThrownBy(() -> Main.divide(2F, -0F)).isInstanceOf(ArithmeticException.class);
     }
+
     @Test
     void dividingPositive() {
         assertThat(Main.divide(100F, 4F)).isEqualTo(25F);

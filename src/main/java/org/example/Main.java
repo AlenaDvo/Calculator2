@@ -33,12 +33,8 @@ public class Main {
                 System.out.println("The result of " + firstOperand + " " + operator + " " + secondOperand + " is " + resultMultiply + ".");
                 break;
             case "/":
-                Object resultDivide = divide(Float.parseFloat(firstOperand), Float.parseFloat(secondOperand));
-                if (resultDivide instanceof String) {
-                    System.out.println(resultDivide);
-                } else {
-                    System.out.println("The result of " + firstOperand + " " + operator + " " + secondOperand + " is " + resultDivide + ".");
-                }
+                Float resultDivide = divide(Float.parseFloat(firstOperand), Float.parseFloat(secondOperand));
+                System.out.println("The result of " + firstOperand + " " + operator + " " + secondOperand + " is " + resultDivide + ".");
                 break;
         }
     }
@@ -62,9 +58,9 @@ public class Main {
         return number1 * number2;
     }
 
-    static Object divide(Float number1, Float number2) {
-        if (number2 == 0) {
-            return "Cannot divide by zero.";
+    static Float divide(Float number1, Float number2) throws ArithmeticException {
+        if (number2 == 0F) {
+            throw new ArithmeticException("Cannot divide by zero.");
         } else {
             return number1 / number2;
         }
